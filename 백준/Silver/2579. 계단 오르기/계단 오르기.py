@@ -1,11 +1,11 @@
-# 계단 오르기
+import sys
 
-n=int(input())
+n=int(sys.stdin.readline())
 
 stairs=[]
 
 for _ in range(n):
-    stairs.append(int(input()))
+    stairs.append(int(sys.stdin.readline()))
 
 # 계단 수 1
 if n==1:
