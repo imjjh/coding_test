@@ -1,25 +1,30 @@
-import sys
-input = sys.stdin.readline
+# 계단 오르기
 
-n = int(input())
+n=int(input())
 
-stairs = []
+stairs=[]
 
 for _ in range(n):
     stairs.append(int(input()))
 
-dp = [0]*n
+# 계단 수 1
+if n==1:
+    print(stairs[0])
+# 계단 수 2
+elif n==2:
+    print(stairs[0]+stairs[1])
+# 계단 수 3 이상
+else:
 
-dp[0] = stairs[0]
-if n == 1:
-    print(dp[0])
-    sys.exit()
-dp[1] = stairs[0]+stairs[1]
+    d=[0]*n # DP
+    # 기저값 정의
+    d[0]= stairs[0]
+    d[1]= stairs[0] + stairs[1]
+    d[2]= max(stairs[0]+stairs[2],+stairs[1]+stairs[2])
 
-if n > 3:
-    dp[2] = max(stairs[1]+stairs[2], stairs[0]+stairs[2])
 
-for i in range(3, n):
-    dp[i] = max(stairs[i]+stairs[i-1]+dp[i-3], stairs[i]+dp[i-2])
+    for i in range(3,n):
+        d[i]= d[i-3]+stairs[i-1]+stairs[i] # 2칸 이후 1칸 이동하는 경우
+        d[i] = max(d[i-2] + stairs[i],d[i]) # 2칸 이동 하는 경우
 
-print(dp[n-1])
+    print(d[-1]) 
