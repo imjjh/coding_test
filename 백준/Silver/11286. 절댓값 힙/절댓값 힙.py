@@ -6,11 +6,11 @@ import sys
 heap=[]
 out=[]
 
-n=int(input())
+n=int(sys.stdin.readline())
 
 for i in range(n):
 
-    num=int(input())
+    num=int(sys.stdin.readline())
 
 
     # 0 입력
